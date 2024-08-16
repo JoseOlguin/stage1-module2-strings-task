@@ -1,10 +1,11 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class StringSplitter {
-
     /**
      * Splits given string applying all delimeters to it. Keeps order of result substrings as in source string.
      *
@@ -13,6 +14,20 @@ public class StringSplitter {
      * @return List of substrings
      */
     public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String delimiter : delimiters) {
+            stringBuilder.append(delimiter);
+        }
+
+        StringTokenizer stringTokenizer = new StringTokenizer(source, stringBuilder.toString());
+
+        List<String> stringList = new ArrayList<>();
+        while (stringTokenizer.hasMoreTokens()) {
+            String token = stringTokenizer.nextToken();
+            stringList.add(token);
+
+        }
+
+        return stringList;
     }
 }
